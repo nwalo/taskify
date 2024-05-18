@@ -110,24 +110,26 @@ const TodoCard: React.FC<TodosInterface> = ({
             )}
 
             <div className="flex gap-1">
-              {label === "ACTIVE" && (
+              {label === "ACTIVE" ? (
                 <span
                   className="ml-2 text-xl cursor-pointer "
                   onClick={() => {
-                    if (!isEdit && !todo?.isDone) {
+                    if (!isEdit) {
                       setEdit(!isEdit);
                     }
                   }}
                 >
                   <AiFillEdit />
                 </span>
+              ) : (
+                <span
+                  className="ml-2 text-xl cursor-pointer "
+                  onClick={() => handleDelete(todo?.id)}
+                >
+                  <AiFillDelete />
+                </span>
               )}
-              <span
-                className="ml-2 text-xl cursor-pointer "
-                onClick={() => handleDelete(todo?.id)}
-              >
-                <AiFillDelete />
-              </span>{" "}
+
               <span
                 className="ml-2 text-xl cursor-pointer "
                 onClick={() => handleDone(todo?.id)}
